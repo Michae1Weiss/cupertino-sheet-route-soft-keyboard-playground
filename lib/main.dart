@@ -23,34 +23,32 @@ void main() {
 }
 
 class Home extends StatelessWidget {
-  const Home({super.key});
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       navigationBar: CupertinoNavigationBar(
-        middle: Text("CupertinoSheetRoute Soft Keyboard Bug"),
+        middle: Text('CupertinoSheetRoute Soft Keyboard Bug'),
       ),
       child: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CupertinoTextField(placeholder: "Input #1"),
+            CupertinoTextField(placeholder: 'Input #1'),
             CupertinoTextField(
-              placeholder: "Input #2",
+              placeholder: 'Input #2',
               keyboardType: TextInputType.number,
             ),
             CupertinoTextField(onTap: () => showBadCupertinoSheetPage(context)),
             CupertinoButton(
-              child: Text("Navigator Push CupertinoPageScaffold - OK"),
+              child: Text('Navigator Push CupertinoPageScaffold - OK'),
               onPressed: () => showOkCupertinoSheetPage(context),
             ),
             CupertinoButton(
-              child: Text("Navigator Push CupertinoPageScaffold - bad"),
+              child: Text('Navigator Push CupertinoPageScaffold - bad'),
               onPressed: () => showBadCupertinoSheetPage(context),
             ),
             CupertinoButton(
-              child: Text("Go Route Sheet Child"),
+              child: Text('Go Route Sheet Child'),
               onPressed: () => context.go('/child'),
             ),
           ],
@@ -61,18 +59,16 @@ class Home extends StatelessWidget {
 }
 
 class Child extends StatelessWidget {
-  const Child({super.key});
-
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
       child: Center(
         child: Column(
           children: [
-            Text("Child"),
-            CupertinoTextField(placeholder: "Input #1"),
+            Text('Child'),
+            CupertinoTextField(placeholder: 'Input #1'),
             CupertinoTextField(
-              placeholder: "Input #2",
+              placeholder: 'Input #2',
               keyboardType: TextInputType.number,
             ),
             CupertinoTextField(
@@ -88,7 +84,7 @@ class Child extends StatelessWidget {
 
 showOkCupertinoSheetPage(context) {
   Navigator.of(context).push(
-    CupertinoSheetRoute(builder: (_) => Center(child: Text("Hello Sheet!"))),
+    CupertinoSheetRoute(builder: (_) => Center(child: Text('Hello Sheet!'))),
   );
 }
 
@@ -98,19 +94,11 @@ showBadCupertinoSheetPage(context) {
       builder:
           (_) => CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
-              middle: Text("Sheet with ListView"),
+              middle: Text('Sheet with ListView'),
             ),
-            /*
-            child: ListView(
-              children: List.generate(
-                10000,
-                (i) => CupertinoListTile(title: Text("$i")),
-              ),
-            ),
-            */
             child: ListView.builder(
               itemCount: 10000,
-              itemBuilder: (_, i) => CupertinoListTile(title: Text("$i")),
+              itemBuilder: (_, i) => CupertinoListTile(title: Text('$i')),
             ),
           ),
     ),
