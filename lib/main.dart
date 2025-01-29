@@ -23,6 +23,8 @@ void main() {
 }
 
 class Home extends StatelessWidget {
+  const Home({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
@@ -59,6 +61,8 @@ class Home extends StatelessWidget {
 }
 
 class Child extends StatelessWidget {
+  const Child({super.key});
+
   @override
   Widget build(BuildContext context) {
     return CupertinoPageScaffold(
