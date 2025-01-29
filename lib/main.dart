@@ -84,13 +84,13 @@ class Child extends StatelessWidget {
 
 showOkCupertinoSheetPage(context) {
   Navigator.of(context).push(
-    CupertinoSheetRoute(builder: (_) => Center(child: Text('Hello Sheet!'))),
+    SheetRoute(builder: (_) => Center(child: Text('Hello Sheet!'))),
   );
 }
 
 showBadCupertinoSheetPage(context) {
   Navigator.of(context).push(
-    CupertinoSheetRoute(
+    SheetRoute(
       builder:
           (_) => CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(

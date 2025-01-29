@@ -1,6 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:sheet/route.dart';
-import 'package:sheet/sheet.dart';
 
 
 void main() {
@@ -18,12 +16,12 @@ class Home extends StatelessWidget {
             CupertinoTextField(),
             CupertinoTextField(keyboardType: TextInputType.number),
             CupertinoButton(
-              child: Text('Navigator Push CupertinoPageScaffold - OK'),  
-              onPressed: () => showOkCupertinoSheetPage(context),// This works ok
+              child: Text('Navigator Push CupertinoPageScaffold - OK'),
+              onPressed: () => showOkCupertinoSheetPage(context),
             ),
             CupertinoButton(
-              child: Text('Navigator Push CupertinoPageScaffold - bad'), 
-              onPressed: () => showBadCupertinoSheetPage(context),// When soft keyboard on Android or iOS is open - the Sheet tries to go up but go down instantly and we see darked background. 
+              child: Text('Navigator Push CupertinoPageScaffold - bad'),
+              onPressed: () => showBadCupertinoSheetPage(context),
             ),
           ],
         ),
@@ -35,18 +33,19 @@ class Home extends StatelessWidget {
 
 showOkCupertinoSheetPage(context) {
   Navigator.of(context).push(
-    SheetRoute(builder: (_) => Center(child: Text('Hello Sheet!'))),
+    CupertinoSheetRoute(builder: (_) => Center(child: Text('Hello Sheet!'))),
   );
 }
 
 showBadCupertinoSheetPage(context) {
   Navigator.of(context).push(
-    SheetRoute(
+    CupertinoSheetRoute(
       builder:
           (_) => CupertinoPageScaffold(
-            //resizeToAvoidBottomInset: false,
-            // child: CupertinoFormSection(children: List.generate(1000, (i) => CupertinoListTile(title: Text('$i')))),  // This works fine
-            child: ListView.builder(  // With ListView the Sheet doesn't appear
+            navigationBar: CupertinoNavigationBar(
+              leading: CupertinoButton(child: Text("Close"), onPressed: () => Navigator.pop(context)),
+            ),
+            child: ListView.builder(
               itemCount: 10000,
               itemBuilder: (_, i) => CupertinoListTile(title: Text('$i')),
             ),
